@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { useScrollAnimation } from '../utils/animations';
+import Header from '../components/Header';
 import Hero from '../components/Hero';
 import StepIndicator from '../components/StepIndicator';
 import FlightSelector from '../components/FlightSelector';
 import HotelSelector from '../components/HotelSelector';
 import BookingSummary from '../components/BookingSummary';
 import InterestForm from '../components/InterestForm';
+import NewFooter from '../components/NewFooter';
 
 const Home = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -73,86 +75,168 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-50">
+      <Header onRegisterInterest={handleRegisterInterest} />
       <Hero onStartPlanning={handleStartPlanning} onRegisterInterest={handleRegisterInterest} />
       
-      <main className="bg-gray-50 relative z-10 main-container">
-        <StepIndicator currentStep={currentStep} />
+      {/* Main Booking Interface */}
+      <main className="bg-gradient-to-br from-slate-50 via-white to-slate-100 relative">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-islamic-pattern opacity-5"></div>
         
-        {/* Informational Message */}
-        <div className="animate-on-scroll mb-8">
-          <div className="card-modern" style={{background: 'linear-gradient(135deg, var(--color-light-gold) 0%, var(--color-sage) 100%)', border: '2px solid var(--color-secondary)', marginBottom: 'var(--spacing-xl)'}}>
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0">
-                <div style={{
-                  width: '48px',
-                  height: '48px',
-                  background: 'var(--color-secondary)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--color-primary)',
-                  fontSize: '1.5rem',
-                  fontWeight: '700'
-                }}>
-                  📢
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          
+          {/* Section Header */}
+          <div className="text-center mb-16 animate-fadeInUp">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold-100 border border-gold-200 mb-6">
+              <span className="text-gold-600 mr-2">🕋</span>
+              <span className="text-gold-800 text-sm font-medium">Complete Your Umrah Booking</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Plan Your Sacred Journey
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Select your flights, choose accommodations in Makkah and Madinah, and complete your booking in just a few simple steps
+            </p>
+          </div>
+
+          {/* Step Indicator */}
+          <div className="mb-12 animate-fadeInUp" style={{animationDelay: '0.2s'}}>
+            <StepIndicator currentStep={currentStep} />
+          </div>
+          
+          {/* Demo Notice */}
+          <div className="animate-fadeInUp mb-12" style={{animationDelay: '0.4s'}}>
+            <div className="bg-gradient-to-r from-gold-50 via-gold-100 to-emerald-50 border-2 border-gold-200 rounded-3xl p-8 shadow-lg">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-600 rounded-2xl flex items-center justify-center shadow-md">
+                    <span className="text-white text-2xl animate-pulse-slow">📢</span>
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                    InshaAllah, Coming Soon!
+                  </h3>
+                  <p className="text-lg text-slate-700 leading-relaxed">
+                    This is a demo version of our comprehensive Umrah booking platform. 
+                    Full booking capabilities will be available once development is complete — 
+                    your feedback helps us build something amazing for the Ummah.
+                  </p>
                 </div>
               </div>
-              <div className="flex-1">
-                <h3 style={{
-                  color: 'var(--color-primary)',
-                  fontSize: 'var(--font-size-xl)',
-                  fontWeight: '700',
-                  marginBottom: 'var(--spacing-sm)',
-                  margin: '0 0 var(--spacing-sm) 0'
-                }}>
-                  InshaAllah, Coming Soon!
-                </h3>
-                <p style={{
-                  color: 'var(--color-gray-700)',
-                  fontSize: 'var(--font-size-lg)',
-                  lineHeight: '1.6',
-                  margin: '0'
-                }}>
-                  This is a demo version of our all-in-one Umrah planner. Booking features will go live once we complete development — your feedback helps us get there faster.
-                </p>
+            </div>
+          </div>
+          
+          {/* Main Booking Layout */}
+          <div className="grid lg:grid-cols-3 gap-12">
+            
+            {/* Booking Forms */}
+            <div className="lg:col-span-2 space-y-8">
+              
+              {/* Flight Selection */}
+              <div ref={flightSectionRef} className="animate-fadeInUp" style={{animationDelay: '0.6s'}}>
+                <FlightSelector 
+                  onFlightSelect={handleFlightSelect}
+                  passengerCounts={passengerCounts}
+                />
+              </div>
+
+              {/* Hotel Selection with Animation */}
+              {currentStep >= 2 && selectedFlights && (
+                <div className="animate-slideInLeft" style={{animationDelay: '0.2s'}}>
+                  <HotelSelector 
+                    onHotelSelect={handleHotelSelect}
+                    flightDateRange={flightDateRange}
+                  />
+                </div>
+              )}
+
+              {/* Travel Tips Card */}
+              <div className="animate-fadeInUp" style={{animationDelay: '0.8s'}}>
+                <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                    <span className="text-3xl">💡</span>
+                    Umrah Travel Tips
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="flex items-start gap-3">
+                      <span className="text-emerald-600 text-lg">✓</span>
+                      <div>
+                        <p className="font-semibold text-slate-800">Best Time to Visit</p>
+                        <p className="text-slate-600 text-sm">October to March for cooler weather</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-emerald-600 text-lg">✓</span>
+                      <div>
+                        <p className="font-semibold text-slate-800">Visa Processing</p>
+                        <p className="text-slate-600 text-sm">Allow 7-14 days for visa approval</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-emerald-600 text-lg">✓</span>
+                      <div>
+                        <p className="font-semibold text-slate-800">Accommodation</p>
+                        <p className="text-slate-600 text-sm">Book closer to Haram for convenience</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-emerald-600 text-lg">✓</span>
+                      <div>
+                        <p className="font-semibold text-slate-800">Health & Safety</p>
+                        <p className="text-slate-600 text-sm">Required vaccinations and insurance</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            {/* Booking Summary Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-24 animate-slideInRight" style={{animationDelay: '0.4s'}}>
+                <BookingSummary 
+                  selectedFlights={selectedFlights}
+                  selectedHotels={selectedHotels}
+                  onPurchase={handlePurchase}
+                />
+                
+                {/* Additional Info Card */}
+                <div className="mt-8 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-3xl p-6 border border-emerald-200">
+                  <h4 className="text-lg font-bold text-emerald-800 mb-3 flex items-center gap-2">
+                    <span>🛡️</span>
+                    Why Choose UmrahDIY?
+                  </h4>
+                  <ul className="space-y-3 text-emerald-700">
+                    <li className="flex items-center gap-2">
+                      <span className="text-emerald-600">✓</span>
+                      <span className="text-sm">ATOL Protected Bookings</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-emerald-600">✓</span>
+                      <span className="text-sm">24/7 Customer Support</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-emerald-600">✓</span>
+                      <span className="text-sm">Best Price Guarantee</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-emerald-600">✓</span>
+                      <span className="text-sm">Flexible Cancellation</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <div className="flex-container">
-          {/* Main Form */}
-          <div className="main-form">
-            {/* Flight Selection */}
-            <div ref={flightSectionRef}>
-              <FlightSelector 
-                onFlightSelect={handleFlightSelect}
-                passengerCounts={passengerCounts}
-              />
-            </div>
-
-            {/* Hotel Selection */}
-            {currentStep >= 2 && selectedFlights && (
-              <HotelSelector 
-                onHotelSelect={handleHotelSelect}
-                flightDateRange={flightDateRange}
-              />
-            )}
-          </div>
-
-          {/* Live Summary */}
-          <div className="live-summary">
-            <BookingSummary 
-              selectedFlights={selectedFlights}
-              selectedHotels={selectedHotels}
-              onPurchase={handlePurchase}
-            />
+            
           </div>
         </div>
       </main>
 
+      <NewFooter />
+      
       <InterestForm 
         isOpen={showInterestForm}
         onClose={() => setShowInterestForm(false)}

@@ -105,10 +105,25 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
   };
 
   return (
-    <div className="card-modern animate-on-scroll" data-step="2">
-      <div className="section-header">
-        <h2>🏨 Select Your Hotels</h2>
-        <p>Add hotel bookings for your trip. You can book up to 4 different locations.</p>
+    <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 transition-all duration-300 hover:shadow-2xl" data-step="2">
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-900 flex items-center gap-4">
+            <div className="p-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-lg">
+              <span className="text-white text-2xl">🏨</span>
+            </div>
+            Hotel Selection
+          </h2>
+          <p className="text-slate-600 text-lg mt-2">
+            Add hotel bookings for your trip. You can book up to 4 different locations.
+          </p>
+        </div>
+        <div className="hidden md:block">
+          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-4 border border-emerald-200">
+            <p className="text-emerald-800 font-semibold text-sm">Step 2 of 3</p>
+            <p className="text-emerald-600 text-xs">Select Hotels</p>
+          </div>
+        </div>
       </div>
 
       {hotelBookings.map((booking, index) => (

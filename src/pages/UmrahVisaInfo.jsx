@@ -1,8 +1,20 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import NewFooter from '../components/NewFooter';
+import InterestForm from '../components/InterestForm';
 
 const UmrahVisaInfo = () => {
+  const [showInterestForm, setShowInterestForm] = useState(false);
+
+  const handleRegisterInterest = () => {
+    setShowInterestForm(true);
+  };
+
   return (
-    <div className="page-container">
+    <div>
+      <Header onRegisterInterest={handleRegisterInterest} />
+      <div className="page-container">
       <div className="page-content">
         <div className="page-card">
           <div className="page-header">
@@ -180,6 +192,13 @@ const UmrahVisaInfo = () => {
           </div>
         </div>
       </div>
+      </div>
+      <NewFooter />
+      
+      <InterestForm 
+        isOpen={showInterestForm}
+        onClose={() => setShowInterestForm(false)}
+      />
     </div>
   );
 };

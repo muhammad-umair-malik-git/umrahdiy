@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Crescent moon -->
+  <path d="M8 16c0-6 4-10 8-12-6 0-10 4-10 10s4 10 10 10c-4-2-8-6-8-8z" fill="#2E7D32"/>
+  
+  <!-- Star -->
+  <path d="M20 6l1 3h3l-2.5 2 1 3-2.5-1.5L17 14l1-3-2.5-2h3z" fill="#FFD700"/>
+  
+  <!-- Mosque dome -->
+  <ellipse cx="16" cy="20" rx="8" ry="4" fill="#4CAF50"/>
+  
+  <!-- Mosque base -->
+  <rect x="10" y="20" width="12" height="8" fill="#2E7D32"/>
+  
+  <!-- Minaret -->
+  <rect x="6" y="12" width="2" height="16" fill="#2E7D32"/>
+  <rect x="24" y="12" width="2" height="16" fill="#2E7D32"/>
+  
+  <!-- Minaret domes -->
+  <ellipse cx="7" cy="12" rx="1.5" ry="1" fill="#4CAF50"/>
+  <ellipse cx="25" cy="12" rx="1.5" ry="1" fill="#4CAF50"/>
+  
+  <!-- Central minaret -->
+  <rect x="15" y="8" width="2" height="12" fill="#2E7D32"/>
+  <ellipse cx="16" cy="8" rx="1.5" ry="1" fill="#4CAF50"/>
+</svg>

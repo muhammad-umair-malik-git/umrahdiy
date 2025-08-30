@@ -1,4 +1,7 @@
+import { useLanguage } from '../contexts/LanguageContext';
+
 const NewFooter = () => {
+  const { t } = useLanguage();
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -12,7 +15,7 @@ const NewFooter = () => {
               </div>
               <div>
                 <span className="text-white font-bold text-xl">UmrahDIY</span>
-                <p className="text-gold-400 text-sm">Plan Your Sacred Journey</p>
+                <p className="text-gold-400 text-sm">{t('tagline')}</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
@@ -43,10 +46,10 @@ const NewFooter = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-gold-400 transition-colors">How it Works</a></li>
-              <li><a href="/umrah-visa-info" className="text-gray-300 hover:text-gold-400 transition-colors">Visa Guide</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-gold-400 transition-colors">{t('howItWorks')}</a></li>
+              <li><a href="/umrah-visa-info" className="text-gray-300 hover:text-gold-400 transition-colors">{t('visaGuide')}</a></li>
               <li><a href="#" className="text-gray-300 hover:text-gold-400 transition-colors">Travel Tips</a></li>
               <li><a href="#" className="text-gray-300 hover:text-gold-400 transition-colors">FAQs</a></li>
             </ul>
@@ -54,11 +57,11 @@ const NewFooter = () => {
 
           {/* Legal */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('legal')}</h3>
             <ul className="space-y-2">
-              <li><a href="/terms-and-conditions" className="text-gray-300 hover:text-gold-400 transition-colors">Terms of Service</a></li>
-              <li><a href="/privacy-policy" className="text-gray-300 hover:text-gold-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-gold-400 transition-colors">Contact Us</a></li>
+              <li><a href="/terms-and-conditions" className="text-gray-300 hover:text-gold-400 transition-colors">{t('termsOfService')}</a></li>
+              <li><a href="/privacy-policy" className="text-gray-300 hover:text-gold-400 transition-colors">{t('privacyPolicy')}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-gold-400 transition-colors">{t('contactUs')}</a></li>
             </ul>
           </div>
         </div>

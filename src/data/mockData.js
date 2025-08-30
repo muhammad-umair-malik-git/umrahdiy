@@ -86,6 +86,141 @@ export const flightData = [
     duration: '18h 25m',
     stops: '1 stop',
     price: 1820
+  },
+  // Jakarta flights
+  {
+    id: 'f9',
+    from: 'CGK',
+    to: 'JED',
+    airline: 'Garuda Indonesia',
+    departure: '00:30',
+    arrival: '06:15',
+    duration: '8h 45m',
+    stops: 'Direct',
+    price: 1450
+  },
+  {
+    id: 'f10',
+    from: 'CGK',
+    to: 'MED',
+    airline: 'Saudia',
+    departure: '22:45',
+    arrival: '05:30+1',
+    duration: '9h 45m',
+    stops: 'Direct',
+    price: 1520
+  },
+  {
+    id: 'f11',
+    from: 'JED',
+    to: 'CGK',
+    airline: 'Garuda Indonesia',
+    departure: '08:30',
+    arrival: '22:15',
+    duration: '8h 45m',
+    stops: 'Direct',
+    price: 1450
+  },
+  {
+    id: 'f12',
+    from: 'MED',
+    to: 'CGK',
+    airline: 'Saudia',
+    departure: '07:15',
+    arrival: '20:30',
+    duration: '9h 15m',
+    stops: 'Direct',
+    price: 1520
+  },
+  // Kuala Lumpur flights
+  {
+    id: 'f13',
+    from: 'KUL',
+    to: 'JED',
+    airline: 'Malaysia Airlines',
+    departure: '01:15',
+    arrival: '06:30',
+    duration: '8h 15m',
+    stops: 'Direct',
+    price: 1380
+  },
+  {
+    id: 'f14',
+    from: 'KUL',
+    to: 'MED',
+    airline: 'Saudia',
+    departure: '23:30',
+    arrival: '05:45+1',
+    duration: '9h 15m',
+    stops: 'Direct',
+    price: 1420
+  },
+  {
+    id: 'f15',
+    from: 'JED',
+    to: 'KUL',
+    airline: 'Malaysia Airlines',
+    departure: '09:45',
+    arrival: '23:30',
+    duration: '8h 45m',
+    stops: 'Direct',
+    price: 1380
+  },
+  {
+    id: 'f16',
+    from: 'MED',
+    to: 'KUL',
+    airline: 'Saudia',
+    departure: '08:00',
+    arrival: '21:15',
+    duration: '9h 15m',
+    stops: 'Direct',
+    price: 1420
+  },
+  // Singapore flights
+  {
+    id: 'f17',
+    from: 'SIN',
+    to: 'JED',
+    airline: 'Singapore Airlines',
+    departure: '01:45',
+    arrival: '07:00',
+    duration: '8h 15m',
+    stops: 'Direct',
+    price: 1520
+  },
+  {
+    id: 'f18',
+    from: 'SIN',
+    to: 'MED',
+    airline: 'Saudia',
+    departure: '23:45',
+    arrival: '06:00+1',
+    duration: '9h 15m',
+    stops: 'Direct',
+    price: 1580
+  },
+  {
+    id: 'f19',
+    from: 'JED',
+    to: 'SIN',
+    airline: 'Singapore Airlines',
+    departure: '10:30',
+    arrival: '00:15+1',
+    duration: '8h 45m',
+    stops: 'Direct',
+    price: 1520
+  },
+  {
+    id: 'f20',
+    from: 'MED',
+    to: 'SIN',
+    airline: 'Saudia',
+    departure: '08:15',
+    arrival: '21:30',
+    duration: '9h 15m',
+    stops: 'Direct',
+    price: 1580
   }
 ];
 
@@ -160,6 +295,9 @@ export const cities = [
   { code: 'AKL', name: 'Auckland', country: 'New Zealand' },
   { code: 'SYD', name: 'Sydney', country: 'Australia' },
   { code: 'MEL', name: 'Melbourne', country: 'Australia' },
+  { code: 'CGK', name: 'Jakarta', country: 'Indonesia' },
+  { code: 'KUL', name: 'Kuala Lumpur', country: 'Malaysia' },
+  { code: 'SIN', name: 'Singapore', country: 'Singapore' },
   { code: 'JED', name: 'Jeddah', country: 'Saudi Arabia' },
   { code: 'MED', name: 'Medina', country: 'Saudi Arabia' }
 ];

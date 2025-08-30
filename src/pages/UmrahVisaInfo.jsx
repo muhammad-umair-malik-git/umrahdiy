@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import NewFooter from '../components/NewFooter';
 import InterestForm from '../components/InterestForm';
 
 const UmrahVisaInfo = () => {
+  const { t } = useLanguage();
   const [showInterestForm, setShowInterestForm] = useState(false);
 
   const handleRegisterInterest = () => {
@@ -22,170 +24,170 @@ const UmrahVisaInfo = () => {
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Back to Home
+{t('backToHome')}
             </Link>
-            <h1 className="page-title">Umrah Visa Information</h1>
-            <p className="page-subtitle">Everything you need to know about obtaining an Umrah visa</p>
+            <h1 className="page-title">{t('umrahVisaInfo')}</h1>
+            <p className="page-subtitle">{t('everythingVisaKnow')}</p>
           </div>
 
           <div>
             <section className="content-section">
-              <h2>What is an Umrah Visa?</h2>
+              <h2>{t('whatIsUmrahVisa')}</h2>
               <p>
-                An Umrah visa is a special type of visa issued by the Kingdom of Saudi Arabia that allows Muslims to visit the holy cities of Mecca and Medina for the purpose of performing Umrah, the Islamic pilgrimage that can be undertaken at any time of the year.
+                {t('umrahVisaDescription')}
               </p>
             </section>
 
             <section className="content-section">
-              <h2>Types of Umrah Visas</h2>
+              <h2>{t('typesOfUmrahVisas')}</h2>
               
               <div className="highlight-box green">
-                <h3>Tourist Visa (eVisa)</h3>
+                <h3>{t('touristVisa')}</h3>
                 <ul>
-                  <li>Valid for tourism and Umrah purposes</li>
-                  <li>Multiple entry visa valid for 1 year</li>
-                  <li>Stay up to 90 days per visit</li>
-                  <li>Can be obtained online</li>
-                  <li>Processing time: 2-5 business days</li>
+                  <li>{t('validForTourism')}</li>
+                  <li>{t('multipleEntry')}</li>
+                  <li>{t('stayUpTo90Days')}</li>
+                  <li>{t('obtainOnline')}</li>
+                  <li>{t('processingTime2to5')}</li>
                 </ul>
               </div>
 
               <div className="highlight-box blue">
-                <h3>Umrah Visa (Traditional)</h3>
+                <h3>{t('traditionalVisa')}</h3>
                 <ul>
-                  <li>Specifically for Umrah pilgrimage</li>
-                  <li>Single or multiple entry options</li>
-                  <li>Valid for 30-90 days</li>
-                  <li>Must be obtained through licensed travel agents</li>
-                  <li>Processing time: 5-15 business days</li>
+                  <li>{t('specificForUmrah')}</li>
+                  <li>{t('singleOrMultiple')}</li>
+                  <li>{t('valid30to90')}</li>
+                  <li>{t('throughTravelAgents')}</li>
+                  <li>{t('processingTime5to15')}</li>
                 </ul>
               </div>
             </section>
 
             <section className="content-section">
-              <h2>Eligibility Requirements</h2>
+              <h2>{t('eligibilityRequirements')}</h2>
               <p>
-                To be eligible for an Umrah visa, you must:
+                {t('eligibleFor')}
               </p>
               <ul>
-                <li>Be a Muslim (may require proof such as a certificate from a mosque)</li>
-                <li>Have a passport valid for at least 6 months from travel date</li>
-                <li>Be in good health with required vaccinations</li>
-                <li>Have proof of accommodation in Saudi Arabia</li>
-                <li>Have return flight tickets</li>
-                <li>Provide proof of financial means</li>
-                <li>Women under 45 must be accompanied by a male guardian (mahram)</li>
+                <li>{t('beMuslim')}</li>
+                <li>{t('validPassport')}</li>
+                <li>{t('goodHealth')}</li>
+                <li>{t('proofAccommodation')}</li>
+                <li>{t('returnTickets')}</li>
+                <li>{t('proofFinancial')}</li>
+                <li>{t('womenUnder45')}</li>
               </ul>
             </section>
 
             <section className="content-section">
-              <h2>Required Documents</h2>
+              <h2>{t('requiredDocuments')}</h2>
               <div className="highlight-box gray">
                 <ul>
-                  <li>Valid passport with at least 6 months validity</li>
-                  <li>Completed visa application form</li>
-                  <li>Recent passport-sized photographs</li>
-                  <li>Proof of Muslim faith (if required)</li>
-                  <li>Vaccination certificate (Meningitis ACWY, COVID-19)</li>
-                  <li>Return flight itinerary</li>
-                  <li>Hotel booking confirmation</li>
-                  <li>Bank statements or proof of financial means</li>
-                  <li>Travel insurance (recommended)</li>
+                  <li>{t('validPassport')}</li>
+                  <li>{t('completedApplication')}</li>
+                  <li>{t('recentPhotos')}</li>
+                  <li>{t('proofMuslim')}</li>
+                  <li>{t('vaccinationCert')}</li>
+                  <li>{t('flightItinerary')}</li>
+                  <li>{t('hotelBooking')}</li>
+                  <li>{t('bankStatements')}</li>
+                  <li>{t('travelInsurance')}</li>
                 </ul>
               </div>
             </section>
 
             <section className="content-section">
-              <h2>Processing Times</h2>
+              <h2>{t('processingTimes')}</h2>
               <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem'}}>
                 <div className="highlight-box green">
-                  <h3>Tourist eVisa</h3>
-                  <p style={{marginBottom: 0}}>2-5 business days (online application)</p>
+                  <h3>{t('touristVisa')}</h3>
+                  <p style={{marginBottom: 0}}>{t('businessDays2to5')}</p>
                 </div>
                 <div className="highlight-box blue">
-                  <h3>Traditional Umrah Visa</h3>
-                  <p style={{marginBottom: 0}}>5-15 business days (through travel agent)</p>
+                  <h3>{t('traditionalVisa')}</h3>
+                  <p style={{marginBottom: 0}}>{t('businessDays5to15')}</p>
                 </div>
               </div>
             </section>
 
             <section className="content-section">
-              <h2>Vaccination Requirements</h2>
+              <h2>{t('vaccinationRequirements')}</h2>
               <div className="highlight-box yellow">
-                <h3>⚠️ Important Health Requirements</h3>
+                <h3>{t('importantHealthReq')}</h3>
                 <ul>
-                  <li><strong>Meningitis ACWY:</strong> Required for all pilgrims, must be received at least 10 days before travel</li>
-                  <li><strong>COVID-19:</strong> Vaccination requirements may vary based on current health guidelines</li>
-                  <li><strong>Yellow Fever:</strong> Required if traveling from or through endemic areas</li>
-                  <li><strong>Seasonal Flu:</strong> Recommended, especially during Hajj season</li>
+                  <li><strong>Meningitis ACWY:</strong> {t('meningitisReq')}</li>
+                  <li><strong>COVID-19:</strong> {t('covidReq')}</li>
+                  <li><strong>Yellow Fever:</strong> {t('yellowFeverReq')}</li>
+                  <li><strong>Seasonal Flu:</strong> {t('fluRecommended')}</li>
                 </ul>
               </div>
             </section>
 
             <section className="content-section">
-              <h2>Application Process</h2>
+              <h2>{t('applicationProcess')}</h2>
               <ul className="step-list">
                 <li className="step-item">
                   <div className="step-number">1</div>
                   <div className="step-content">
-                    <h4>Choose Visa Type</h4>
-                    <p>Decide between Tourist eVisa or traditional Umrah visa</p>
+                    <h4>{t('chooseVisaType')}</h4>
+                    <p>{t('decideVisa')}</p>
                   </div>
                 </li>
                 <li className="step-item">
                   <div className="step-number">2</div>
                   <div className="step-content">
-                    <h4>Prepare Documents</h4>
-                    <p>Gather all required documents and ensure vaccinations are up to date</p>
+                    <h4>{t('prepareDocuments')}</h4>
+                    <p>{t('gatherDocs')}</p>
                   </div>
                 </li>
                 <li className="step-item">
                   <div className="step-number">3</div>
                   <div className="step-content">
-                    <h4>Submit Application</h4>
-                    <p>Apply online (eVisa) or through a licensed travel agent</p>
+                    <h4>{t('submitApplication')}</h4>
+                    <p>{t('applyOnline')}</p>
                   </div>
                 </li>
                 <li className="step-item">
                   <div className="step-number">4</div>
                   <div className="step-content">
-                    <h4>Wait for Processing</h4>
-                    <p>Processing times vary by visa type</p>
+                    <h4>{t('waitProcessing')}</h4>
+                    <p>{t('processingVary')}</p>
                   </div>
                 </li>
                 <li className="step-item">
                   <div className="step-number">5</div>
                   <div className="step-content">
-                    <h4>Receive Visa</h4>
-                    <p>Print your visa and keep it with your passport</p>
+                    <h4>{t('receiveVisa')}</h4>
+                    <p>{t('printVisa')}</p>
                   </div>
                 </li>
               </ul>
             </section>
 
             <section className="content-section">
-              <h2>Official Resources</h2>
+              <h2>{t('officialResources')}</h2>
               <div className="highlight-box gray">
                 <p>
-                  For the most up-to-date information and to apply for visas, visit these official websites:
+                  {t('upToDateInfo')}
                 </p>
                 <ul>
-                  <li><strong>Saudi eVisa Portal:</strong> <a href="https://visa.visitsaudi.com" style={{color: '#3b82f6', textDecoration: 'underline'}} target="_blank" rel="noopener noreferrer">visa.visitsaudi.com</a></li>
-                  <li><strong>Ministry of Hajj and Umrah:</strong> <a href="https://www.haj.gov.sa" style={{color: '#3b82f6', textDecoration: 'underline'}} target="_blank" rel="noopener noreferrer">haj.gov.sa</a></li>
-                  <li><strong>Saudi Arabian Embassy:</strong> Contact your local Saudi embassy or consulate</li>
+                  <li><strong>{t('saudiEvisaPortal')}</strong> <a href="https://visa.visitsaudi.com" style={{color: '#3b82f6', textDecoration: 'underline'}} target="_blank" rel="noopener noreferrer">visa.visitsaudi.com</a></li>
+                  <li><strong>{t('ministryHajj')}</strong> <a href="https://www.haj.gov.sa" style={{color: '#3b82f6', textDecoration: 'underline'}} target="_blank" rel="noopener noreferrer">haj.gov.sa</a></li>
+                  <li><strong>{t('saudiEmbassy')}</strong></li>
                 </ul>
               </div>
             </section>
 
             <section className="content-section">
-              <h2>Important Notes</h2>
+              <h2>{t('importantNotes')}</h2>
               <div className="highlight-box red">
                 <ul>
-                  <li>Visa requirements and processes can change frequently</li>
-                  <li>Always verify current requirements with official Saudi government sources</li>
-                  <li>Allow sufficient time for visa processing before your travel date</li>
-                  <li>Keep digital and physical copies of all your travel documents</li>
-                  <li>Consider travel insurance for your trip</li>
+                  <li>{t('visaRequirementsChange')}</li>
+                  <li>{t('verifyCurrentReq')}</li>
+                  <li>{t('allowSufficientTime')}</li>
+                  <li>{t('keepCopies')}</li>
+                  <li>{t('considerInsurance')}</li>
                 </ul>
               </div>
             </section>

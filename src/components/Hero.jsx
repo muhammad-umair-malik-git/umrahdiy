@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = ({ onStartPlanning, onRegisterInterest }) => {
+  const { t } = useLanguage();
   const handleRegisterInterestClick = () => {
     const interestFormElement = document.getElementById('interest-form');
     if (interestFormElement) {
@@ -18,7 +20,7 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 overflow-hidden">
+    <section id="hero" className="relative min-h-[85vh] bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 overflow-hidden">
       {/* Islamic Pattern Background */}
       <div className="absolute inset-0 bg-islamic-pattern opacity-10"></div>
       
@@ -38,21 +40,16 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
             <div className="hero-animate animate-fadeInUp">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold-500/10 border border-gold-400/20 backdrop-blur-sm mb-6">
                 <span className="text-gold-400 mr-2">🕋</span>
-                <span className="text-gold-100 text-sm font-medium">Most Trusted Umrah Platform</span>
+                <span className="text-gold-100 text-sm font-medium">{t('mostTrustedPlatform')}</span>
               </div>
             </div>
 
             <h1 className="hero-animate animate-fadeInUp text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Plan Your Umrah –<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-300">
-                Flights, Hotels & Transport
-              </span><br />
-              in One Place
+              {t('heroTitle')}
             </h1>
 
             <p className="hero-animate animate-fadeInUp text-xl text-gray-300 mb-8 leading-relaxed">
-              Experience a seamless Umrah planning journey with our comprehensive platform. 
-              From flights to accommodation, we make your sacred pilgrimage effortless and meaningful.
+              {t('heroSubtitle')}
             </p>
 
             <div className="hero-animate animate-fadeInUp flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -62,7 +59,7 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
               >
                 <span className="flex items-center justify-center gap-3">
                   <span className="text-2xl group-hover:scale-110 transition-transform">🚀</span>
-                  Start Planning Now
+                  {t('startPlanning')}
                 </span>
               </button>
               
@@ -72,7 +69,7 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
               >
                 <span className="flex items-center justify-center gap-3">
                   <span className="text-2xl group-hover:scale-110 transition-transform">📝</span>
-                  Register Interest
+                  {t('registerInterest')}
                 </span>
               </button>
             </div>
@@ -80,15 +77,15 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
             <div className="hero-animate animate-fadeInUp mt-12 flex items-center justify-center lg:justify-start gap-8 text-gray-400">
               <div className="flex items-center gap-2">
                 <span className="text-emerald-400">✓</span>
-                <span className="text-sm">Instant Booking</span>
+                <span className="text-sm">{t('instantBooking')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-emerald-400">✓</span>
-                <span className="text-sm">Best Prices</span>
+                <span className="text-sm">{t('bestPrices')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-emerald-400">✓</span>
-                <span className="text-sm">24/7 Support</span>
+                <span className="text-sm">{t('support24x7')}</span>
               </div>
             </div>
           </div>
@@ -97,7 +94,7 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
           <div className="hero-animate animate-fadeInUp lg:animate-slideInRight">
             <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-8 border border-white/20">
               <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
-                Quick Booking Preview
+                {t('quickBookingPreview')}
               </h3>
               
               <div className="space-y-6">
@@ -107,8 +104,8 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
                       <span className="text-white text-lg">✈️</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-800">Flights</p>
-                      <p className="text-sm text-slate-600">Return flights included</p>
+                      <p className="font-semibold text-slate-800">{t('flights')}</p>
+                      <p className="text-sm text-slate-600">{t('roundTripFlights')}</p>
                     </div>
                   </div>
                   <span className="text-gold-600 font-bold">From $899</span>
@@ -120,8 +117,8 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
                       <span className="text-white text-lg">🏨</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-800">Hotels</p>
-                      <p className="text-sm text-slate-600">Makkah & Madinah stay</p>
+                      <p className="font-semibold text-slate-800">{t('hotels')}</p>
+                      <p className="text-sm text-slate-600">{t('hotelAccommodation')}</p>
                     </div>
                   </div>
                   <span className="text-emerald-600 font-bold">From $299</span>
@@ -133,8 +130,8 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
                       <span className="text-white text-lg">🚌</span>
                     </div>
                     <div>
-                      <p className="font-semibold text-slate-800">Transport</p>
-                      <p className="text-sm text-slate-600">Airport transfers</p>
+                      <p className="font-semibold text-slate-800">{t('transport')}</p>
+                      <p className="text-sm text-slate-600">{t('airportTransfers')}</p>
                     </div>
                   </div>
                   <span className="text-blue-600 font-bold">From $99</span>
@@ -143,10 +140,10 @@ const Hero = ({ onStartPlanning, onRegisterInterest }) => {
 
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <div className="flex items-center justify-between text-lg font-bold text-slate-900">
-                  <span>Complete Package</span>
+                  <span>{t('totalPackageCost')}</span>
                   <span className="text-gold-600">From $1,297</span>
                 </div>
-                <p className="text-sm text-slate-600 mt-1 text-center">*Price per person, all inclusive</p>
+                <p className="text-sm text-slate-600 mt-1 text-center">*{t('pricePerAdult')}, all inclusive</p>
               </div>
             </div>
           </div>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const InterestForm = ({ isOpen, onClose }) => {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -87,10 +89,10 @@ const InterestForm = ({ isOpen, onClose }) => {
               </div>
               <div className="ml-3">
                 <p className="text-green-800 text-sm font-medium">
-                  ✨ Thank you! Your interest has been recorded.
+                  {t('interestRecorded')}
                 </p>
                 <p className="text-green-800 text-sm mt-1">
-                  We'll keep you updated on our launch progress, inshaAllah.
+                  {t('keepUpdated')}
                 </p>
               </div>
             </div>
@@ -98,7 +100,7 @@ const InterestForm = ({ isOpen, onClose }) => {
         )}
         
         <div className="modal-header">
-          <h2>Register Your Interest</h2>
+          <h2>{t('stayUpdatedLaunch')}</h2>
           <button
             onClick={onClose}
             className="modal-close"
@@ -108,29 +110,28 @@ const InterestForm = ({ isOpen, onClose }) => {
         </div>
         
         <p className="text-gray-600 mb-6 leading-relaxed">
-          Help us make Umrah planning easier for everyone. Register your interest to stay in the loop. 
-          If there's enough interest, inshaAllah we'll launch the full version soon.
+          {t('registerInterestDesc')}
         </p>
         
         <div className="form-group mb-6">
-          <label htmlFor="interest-email">Email Address</label>
+          <label htmlFor="interest-email">{t('emailAddressLabel')}</label>
           <input
             type="email"
             id="interest-email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email address"
+            placeholder={t('emailPlaceholder')}
             disabled={isSubmitting}
           />
         </div>
         
         <div className="form-group" style={{ marginBottom: 'var(--spacing-2xl)' }}>
-          <label htmlFor="interest-message">Your message (optional)</label>
+          <label htmlFor="interest-message">{t('yourMessageLabel')}</label>
           <textarea
             id="interest-message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Any feedback or thoughts? We'd love to hear from you."
+            placeholder={t('messagePlaceholderLong')}
             disabled={isSubmitting}
             rows={4}
             style={{
@@ -198,7 +199,7 @@ const InterestForm = ({ isOpen, onClose }) => {
               }}
             />
           )}
-          {isSubmitting ? 'Submitting...' : 'Register Interest'}
+          {isSubmitting ? t('submitting') : t('submitInterest')}
         </button>
       </div>
       

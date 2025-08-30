@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StepIndicator = ({ currentStep }) => {
+  const { t } = useLanguage();
+  
   const steps = [
-    { number: 1, label: 'Flights', icon: '✈️' },
-    { number: 2, label: 'Hotels', icon: '🏨' },
-    { number: 3, label: 'Summary', icon: '📋' }
+    { number: 1, label: t('flights'), icon: '✈️' },
+    { number: 2, label: t('hotels'), icon: '🏨' },
+    { number: 3, label: t('summary'), icon: '📋' }
   ];
 
   useEffect(() => {
@@ -48,10 +51,10 @@ const StepIndicator = ({ currentStep }) => {
                 step.number === currentStep ? 'text-gold-600' : 'text-slate-400'
               }`}>
                 {step.number === currentStep 
-                  ? 'In Progress' 
+                  ? t('inProgress') 
                   : step.number < currentStep 
-                  ? 'Completed' 
-                  : 'Pending'
+                  ? t('completed') 
+                  : t('pending')
                 }
               </div>
             </div>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { hotelData } from '../data/mockData';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
+  const { t } = useLanguage();
   const [hotelBookings, setHotelBookings] = useState([]);
 
   const addHotelBooking = () => {
@@ -112,16 +114,16 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
             <div className="p-3 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-lg">
               <span className="text-white text-2xl">🏨</span>
             </div>
-            Hotel Selection
+{t('hotelSelection')}
           </h2>
           <p className="text-slate-600 text-lg mt-2">
-            Add hotel bookings for your trip. You can book up to 4 different locations.
+{t('addHotelBookings')}
           </p>
         </div>
         <div className="hidden md:block">
           <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-4 border border-emerald-200">
-            <p className="text-emerald-800 font-semibold text-sm">Step 2 of 3</p>
-            <p className="text-emerald-600 text-xs">Select Hotels</p>
+            <p className="text-emerald-800 font-semibold text-sm">{t('stepTwoOfThree')}</p>
+            <p className="text-emerald-600 text-xs">{t('selectHotels')}</p>
           </div>
         </div>
       </div>
@@ -129,32 +131,32 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
       {hotelBookings.map((booking, index) => (
         <div key={booking.id} className="hotel-booking-section">
           <div className="hotel-booking-header">
-            <h4 className="section-subheader">Hotel Booking {index + 1}</h4>
+            <h4 className="section-subheader">{t('hotelBooking')} {index + 1}</h4>
             {index > 0 && (
               <button
                 onClick={() => removeHotelBooking(booking.id)}
                 className="btn-danger"
               >
-                Remove
+{t('remove')}
               </button>
             )}
           </div>
           
           <div className="form-row">
             <div className="form-group">
-              <label>📍 Location</label>
+              <label>📍 {t('location')}</label>
               <select 
                 value={booking.location}
                 onChange={(e) => updateBooking(booking.id, 'location', e.target.value)}
               >
-                <option value="">Select Location</option>
-                <option value="Jeddah">🏙️ Jeddah</option>
-                <option value="Mecca">🕋 Mecca (Makkah)</option>
-                <option value="Medina">🕌 Medina (Madinah)</option>
+                <option value="">{t('selectLocation')}</option>
+                <option value="Jeddah">🏙️ {t('jeddah')}</option>
+                <option value="Mecca">🕋 {t('mecca')}</option>
+                <option value="Medina">🕌 {t('medina')}</option>
               </select>
             </div>
             <div className="form-group">
-              <label>📅 Check-in Date</label>
+              <label>📅 {t('checkinDate')}</label>
               <input 
                 type="date" 
                 value={booking.checkinDate}
@@ -164,7 +166,7 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
               />
             </div>
             <div className="form-group">
-              <label>📅 Check-out Date</label>
+              <label>📅 {t('checkoutDate')}</label>
               <input 
                 type="date" 
                 value={booking.checkoutDate}
@@ -181,7 +183,7 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
 
           {booking.availableHotels.length > 0 && (
             <div>
-              <h5 className="section-subheader">Available Hotels</h5>
+              <h5 className="section-subheader">{t('availableHotels')}</h5>
               <div className="grid gap-4">
                 {booking.availableHotels.map((hotel, hotelIndex) => (
                   <div 
@@ -202,12 +204,12 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
                         <div className="option-details">
                           <h4>{hotel.name}</h4>
                           <p className="hotel-rating">
-                            ⭐ {'★'.repeat(hotel.rating)} {hotel.rating} stars
+⭐ {'★'.repeat(hotel.rating)} {hotel.rating} {t('rating')}
                           </p>
                           <p>📍 {hotel.location}</p>
                         </div>
                       </div>
-                      <div className="option-price">${hotel.price}/night</div>
+                      <div className="option-price">${hotel.price}/{t('perNight')}</div>
                     </div>
                   </div>
                 ))}
@@ -223,7 +225,7 @@ const HotelSelector = ({ onHotelSelect, flightDateRange }) => {
         className={hotelBookings.length >= 4 ? 'btn-secondary' : 'btn-primary'}
         style={{width: '100%', opacity: hotelBookings.length >= 4 ? 0.6 : 1, cursor: hotelBookings.length >= 4 ? 'not-allowed' : 'pointer'}}
       >
-        Add Hotel Booking ({hotelBookings.length}/4)
+{t('addAnotherHotel')} ({hotelBookings.length}/4)
       </button>
     </div>
   );

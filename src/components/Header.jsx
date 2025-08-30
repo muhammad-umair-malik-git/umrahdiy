@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = ({ onRegisterInterest }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="bg-white/95 backdrop-blur-md shadow-sm border-b border-gold-100 sticky top-0 z-50">
@@ -15,23 +18,24 @@ const Header = ({ onRegisterInterest }) => {
             </div>
             <div className="flex flex-col">
               <span className="text-slate-900 font-bold text-lg leading-tight">UmrahDIY</span>
-              <span className="text-gold-600 text-xs font-medium leading-tight">Plan Your Sacred Journey</span>
+              <span className="text-gold-600 text-xs font-medium leading-tight">{t('tagline')}</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-slate-700 hover:text-gold-600 font-medium transition-colors duration-200">
-              How it Works
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="/#hero" className="text-slate-700 hover:text-gold-600 font-medium transition-colors duration-200">
+              {t('howItWorks')}
             </a>
             <a href="/umrah-visa-info" className="text-slate-700 hover:text-gold-600 font-medium transition-colors duration-200">
-              Visa Guide
+              {t('visaGuide')}
             </a>
+            <LanguageSwitcher />
             <button 
               onClick={onRegisterInterest}
               className="bg-gradient-to-r from-gold-500 to-gold-600 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
             >
-              Register Interest
+              {t('registerInterest')}
             </button>
           </nav>
 
@@ -54,17 +58,20 @@ const Header = ({ onRegisterInterest }) => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100 animate-fadeInUp">
             <div className="flex flex-col space-y-3">
-              <a href="#" className="text-slate-700 hover:text-gold-600 font-medium py-2 transition-colors">
-                How it Works
+              <a href="/#hero" className="text-slate-700 hover:text-gold-600 font-medium py-2 transition-colors">
+                {t('howItWorks')}
               </a>
               <a href="/umrah-visa-info" className="text-slate-700 hover:text-gold-600 font-medium py-2 transition-colors">
-                Visa Guide
+                {t('visaGuide')}
               </a>
+              <div className="py-2">
+                <LanguageSwitcher />
+              </div>
               <button 
                 onClick={onRegisterInterest}
                 className="bg-gradient-to-r from-gold-500 to-gold-600 text-white px-4 py-2 rounded-lg font-medium mt-2 text-left cursor-pointer"
               >
-                Register Interest
+                {t('registerInterest')}
               </button>
             </div>
           </div>

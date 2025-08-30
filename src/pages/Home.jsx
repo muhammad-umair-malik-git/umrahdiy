@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useScrollAnimation } from '../utils/animations';
+import { useLanguage } from '../contexts/LanguageContext';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import StepIndicator from '../components/StepIndicator';
@@ -10,6 +11,7 @@ import InterestForm from '../components/InterestForm';
 import NewFooter from '../components/NewFooter';
 
 const Home = () => {
+  const { t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedFlights, setSelectedFlights] = useState(null);
   const [selectedHotels, setSelectedHotels] = useState([]);
@@ -90,13 +92,13 @@ const Home = () => {
           <div className="text-center mb-16 animate-fadeInUp">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold-100 border border-gold-200 mb-6">
               <span className="text-gold-600 mr-2">🕋</span>
-              <span className="text-gold-800 text-sm font-medium">Complete Your Umrah Booking</span>
+              <span className="text-gold-800 text-sm font-medium">{t('completeBooking')}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Plan Your Sacred Journey
+              {t('planSacredJourney')}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Select your flights, choose accommodations in Makkah and Madinah, and complete your booking in just a few simple steps
+              {t('bookingDescription')}
             </p>
           </div>
 
@@ -116,12 +118,10 @@ const Home = () => {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                    InshaAllah, Coming Soon!
+                    {t('comingSoon')}
                   </h3>
                   <p className="text-lg text-slate-700 leading-relaxed">
-                    This is a demo version of our comprehensive Umrah booking platform. 
-                    Full booking capabilities will be available once development is complete — 
-                    your feedback helps us build something amazing for the Ummah.
+                    {t('comingSoonDesc')}
                   </p>
                 </div>
               </div>
@@ -157,35 +157,35 @@ const Home = () => {
                 <div className="bg-white rounded-3xl shadow-lg border border-slate-200 p-8">
                   <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
                     <span className="text-3xl">💡</span>
-                    Umrah Travel Tips
+                    {t('travelTips')}
                   </h3>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="flex items-start gap-3">
                       <span className="text-emerald-600 text-lg">✓</span>
                       <div>
-                        <p className="font-semibold text-slate-800">Best Time to Visit</p>
-                        <p className="text-slate-600 text-sm">October to March for cooler weather</p>
+                        <p className="font-semibold text-slate-800">{t('bestTimeToVisit')}</p>
+                        <p className="text-slate-600 text-sm">{t('bestTimeDesc')}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="text-emerald-600 text-lg">✓</span>
                       <div>
-                        <p className="font-semibold text-slate-800">Visa Processing</p>
-                        <p className="text-slate-600 text-sm">Allow 7-14 days for visa approval</p>
+                        <p className="font-semibold text-slate-800">{t('visaProcessing')}</p>
+                        <p className="text-slate-600 text-sm">{t('visaProcessingDesc')}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="text-emerald-600 text-lg">✓</span>
                       <div>
-                        <p className="font-semibold text-slate-800">Accommodation</p>
-                        <p className="text-slate-600 text-sm">Book closer to Haram for convenience</p>
+                        <p className="font-semibold text-slate-800">{t('accommodation')}</p>
+                        <p className="text-slate-600 text-sm">{t('accommodationDesc')}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="text-emerald-600 text-lg">✓</span>
                       <div>
-                        <p className="font-semibold text-slate-800">Health & Safety</p>
-                        <p className="text-slate-600 text-sm">Required vaccinations and insurance</p>
+                        <p className="font-semibold text-slate-800">{t('healthSafety')}</p>
+                        <p className="text-slate-600 text-sm">{t('healthSafetyDesc')}</p>
                       </div>
                     </div>
                   </div>
@@ -207,24 +207,24 @@ const Home = () => {
                 <div className="mt-8 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-3xl p-6 border border-emerald-200">
                   <h4 className="text-lg font-bold text-emerald-800 mb-3 flex items-center gap-2">
                     <span>🛡️</span>
-                    Why Choose UmrahDIY?
+                    {t('whyChooseUs')}
                   </h4>
                   <ul className="space-y-3 text-emerald-700">
                     <li className="flex items-center gap-2">
                       <span className="text-emerald-600">✓</span>
-                      <span className="text-sm">ATOL Protected Bookings</span>
+                      <span className="text-sm">{t('atolProtected')}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="text-emerald-600">✓</span>
-                      <span className="text-sm">24/7 Customer Support</span>
+                      <span className="text-sm">{t('customerSupport')}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="text-emerald-600">✓</span>
-                      <span className="text-sm">Best Price Guarantee</span>
+                      <span className="text-sm">{t('bestPrice')}</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="text-emerald-600">✓</span>
-                      <span className="text-sm">Flexible Cancellation</span>
+                      <span className="text-sm">{t('flexibleCancellation')}</span>
                     </li>
                   </ul>
                 </div>

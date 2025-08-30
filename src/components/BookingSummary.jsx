@@ -1,4 +1,7 @@
+import { useLanguage } from '../contexts/LanguageContext';
+
 const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
+  const { t } = useLanguage();
   console.log('BookingSummary received hotels:', selectedHotels);
   const calculateFlightTotal = () => {
     if (!selectedFlights || selectedFlights.length === 0) return 0;
@@ -26,9 +29,9 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-gold-500 to-gold-600 rounded-2xl shadow-lg mb-4">
           <span className="text-white text-2xl">📋</span>
         </div>
-        <h2 className="text-3xl font-bold text-slate-900 mb-2">Booking Summary</h2>
+        <h2 className="text-3xl font-bold text-slate-900 mb-2">{t('bookingSummary')}</h2>
         <p className="text-slate-600 text-lg">
-          Review your selected flights and hotels before finalizing
+          {t('reviewBooking')}
         </p>
       </div>
 
@@ -38,7 +41,7 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
         <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
           <h3 className="text-xl font-bold text-blue-800 mb-4 flex items-center gap-2">
             <span className="text-2xl">✈️</span>
-            Flight Details
+            {t('flightDetails')}
           </h3>
           {selectedFlights && selectedFlights.length > 0 ? (
             selectedFlights.map((flight, index) => (
@@ -59,8 +62,8 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
           ) : (
             <div className="bg-white rounded-xl p-4 border border-blue-200 text-center">
               <div className="text-blue-300 text-4xl mb-2">✈️</div>
-              <div className="text-blue-600 font-medium">No flights selected yet</div>
-              <div className="text-blue-500 text-sm">Choose your flights to see details here</div>
+              <div className="text-blue-600 font-medium">{t('noFlightsSelected')}</div>
+              <div className="text-blue-500 text-sm">{t('chooseFlights')}</div>
             </div>
           )}
         </div>
@@ -69,7 +72,7 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
         <div className="bg-gradient-to-r from-emerald-50 to-emerald-100 rounded-2xl p-6 border border-emerald-200">
           <h3 className="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2">
             <span className="text-2xl">🏨</span>
-            Hotel Details
+            {t('hotelDetails')}
           </h3>
           {selectedHotels && selectedHotels.length > 0 ? (
             selectedHotels.map((hotel, index) => (
@@ -90,8 +93,8 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
           ) : (
             <div className="bg-white rounded-xl p-4 border border-emerald-200 text-center">
               <div className="text-emerald-300 text-4xl mb-2">🏨</div>
-              <div className="text-emerald-600 font-medium">No hotels selected yet</div>
-              <div className="text-emerald-500 text-sm">Choose your hotels to see details here</div>
+              <div className="text-emerald-600 font-medium">{t('noHotelsSelected')}</div>
+              <div className="text-emerald-500 text-sm">{t('chooseHotels')}</div>
             </div>
           )}
         </div>
@@ -100,13 +103,13 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
         <div className="bg-gradient-to-r from-gold-50 to-gold-100 rounded-2xl p-6 border-2 border-gold-200">
           <h3 className="text-xl font-bold text-gold-800 mb-4 flex items-center gap-2">
             <span className="text-2xl">💰</span>
-            Total Package Cost
+            {t('totalPackageCost')}
           </h3>
           <div className="bg-white rounded-xl p-6 border border-gold-200">
             <div className="text-center">
               <div className="text-4xl font-bold text-gold-600 mb-2">${getTotalCost()}</div>
-              <div className="text-gold-700 font-medium">Total Package Price</div>
-              <div className="text-gold-600 text-sm mt-1">Cost per person: ${getCostPerPax()}</div>
+              <div className="text-gold-700 font-medium">{t('totalPackagePrice')}</div>
+              <div className="text-gold-600 text-sm mt-1">{t('costPerPerson')}: ${getCostPerPax()}</div>
             </div>
           </div>
         </div>
@@ -127,8 +130,8 @@ const BookingSummary = ({ selectedFlights, selectedHotels, onPurchase }) => {
           <span className="flex items-center justify-center gap-3">
             <span className="text-2xl">🕋</span>
             {selectedFlights && selectedFlights.length > 0 
-              ? 'Complete Booking - Labbaik Allahumma labbaik' 
-              : 'Select Flights to Continue'
+              ? t('completeBookingCTA') 
+              : t('selectFlightsToContinue')
             }
           </span>
         </button>

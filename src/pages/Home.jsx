@@ -77,7 +77,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 overflow-x-hidden">
       <Header onRegisterInterest={handleRegisterInterest} />
       <Hero onStartPlanning={handleStartPlanning} onRegisterInterest={handleRegisterInterest} />
       
@@ -86,7 +86,7 @@ const Home = () => {
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-islamic-pattern opacity-5"></div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
           
           {/* Section Header */}
           <div className="text-center mb-16 animate-fadeInUp">
@@ -103,7 +103,7 @@ const Home = () => {
           </div>
 
           {/* Step Indicator */}
-          <div className="mb-12 animate-fadeInUp" style={{animationDelay: '0.2s'}}>
+          <div className="mb-8 sm:mb-12 animate-fadeInUp" style={{animationDelay: '0.2s'}}>
             <StepIndicator currentStep={currentStep} />
           </div>
           
@@ -129,10 +129,10 @@ const Home = () => {
           </div>
           
           {/* Main Booking Layout */}
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             
             {/* Booking Forms */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-6 sm:space-y-8">
               
               {/* Flight Selection */}
               <div ref={flightSectionRef} className="animate-fadeInUp" style={{animationDelay: '0.6s'}}>
